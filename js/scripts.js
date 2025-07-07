@@ -120,8 +120,14 @@ const resetGame = () => {
     text.style.display = 'block'
 }
 
+// Computador
 window.addEventListener('keydown', jump)
-document.addEventListener('touchstart', jump); // Adicionado para mobile
 play.addEventListener('click', startTheGame)
 pause.addEventListener('click', pauseGame)
 reset.addEventListener('click', resetGame)
+
+// Adicionado para mobile
+document.addEventListener('touchstart', jump);
+play.addEventListener('touchstart', startTheGame)
+pause.addEventListener('touchstart', pauseGame)
+reset.addEventListener('touchstart', resetGame)
