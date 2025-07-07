@@ -14,12 +14,6 @@
     background: linear-gradient(#87ceeb, #e0f6ff);
 }
 
-.clouds {
-    position: absolute;
-    width: 400px;
-    animation: clouds-animation 20s infinite linear;
-}
-
 .mario {
     position: absolute;
     height: 150px;
@@ -27,26 +21,10 @@
 }
 
 .jump { 
-    animation: person-animation 500ms ease-out;
+    animation: jump-animation 500ms ease-out;
 }
 
-.pipe {
-    position: absolute;
-    bottom: 0;
-    height: 80px;  
-    animation: pipe-animation 1.5s infinite linear;
-}
-
-@keyframes clouds-animation {
-    from {
-        right: -450px;
-    }
-    to {
-        right: 100%;
-    }
-}
-
-@keyframes person-animation {
+@keyframes jump-animation {
     0% {
         bottom: 0;
     }
@@ -61,6 +39,19 @@
     }
 }
 
+.pipe {
+    position: absolute;
+    bottom: 0;
+    height: 80px;  
+    visibility: hidden;
+}
+
+.move-pipe {
+    visibility: visible;
+    animation: pipe-animation 1.5s infinite linear;
+    animation-play-state: paused;
+}
+
 @keyframes pipe-animation {
     from {
         right: -80px;
@@ -70,5 +61,135 @@
     }
 }
 
+.clouds {
+    position: absolute;
+    width: 400px;    
+    visibility: hidden;
+}
 
+.move-clouds {
+    visibility: visible;
+    animation: clouds-animation 20s infinite linear;
+    animation-play-state: paused;
+}
 
+@keyframes clouds-animation {
+    from {
+        right: -450px;
+    }
+    to {
+        right: 100%;
+    }
+}
+
+.game-over {
+    width: 90%;
+    min-width: 30%;
+    max-width: 400px;
+    height: 50%;
+    background: #036e15;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    inset: 50% 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 2px solid #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 6px 22px #000;
+    visibility: hidden;
+}
+
+.scale {
+    visibility: visible;
+    animation: scale 500ms forwards;
+}
+
+@keyframes scale {
+    to {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.game-over h2 {
+    font-size: 2.5rem;
+    color: #e0f6ff;
+    text-shadow: 0px 0px 3px #000;
+    margin-bottom: 30px;
+}
+
+.game-over button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #ffffff;
+    text-shadow: 0px 0px 3px #000;
+    cursor: pointer;
+}
+
+.game-over button:active {
+    transform: scale(1.2);
+}
+
+.btns {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btns button {
+    /* width: 70px;
+    height: 30px; */
+    padding: 10px;
+    background: #0b21e7;
+    border: none;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px #000;
+}
+
+.btns button:nth-child(2) {
+    background: #036e15;
+}
+
+.btns button:active {
+    background: transparent;
+}
+
+.btns button:hover {
+    transform: scale(1.1);
+}
+
+.text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 150px;
+    background: #0b21e7;
+    padding: 5px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.text p {
+    color:#87ceeb;
+    font-size: 1.8rem ;
+    text-shadow: 0px 0px 10px #000;
+}
