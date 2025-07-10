@@ -139,6 +139,7 @@ reset.addEventListener('click', resetGame)
 
 // Adicionado para mobile
 document.addEventListener('touchstart', jump);
+menu.addEventListener('touchstart', showMenu)
 play.addEventListener('touchstart', startTheGame)
 pause.addEventListener('touchstart', pauseGame)
 reset.addEventListener('touchstart', resetGame)
