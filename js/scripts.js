@@ -1,3 +1,4 @@
+const menu = document.querySelector('.menu-button')
 const play = document.querySelector('.play')
 const pause = document.querySelector('.pause')
 const mario = document.querySelector('.mario')
@@ -5,7 +6,6 @@ const pipe = document.querySelector('.pipe')
 const clouds = document.querySelector('.clouds')
 const gameOver = document.querySelector('.game-over')
 const reset = document.querySelector('.reset')
-const text = document.querySelector('.text')
 
 let loop = null
 let isPlaying = false // Controle do estado do jogo.
@@ -24,6 +24,17 @@ const jump = () => {
     }
 }
 
+const showMenu = () => {
+    const infoText = document.querySelector('.info-text')
+    const displayAtual = window.getComputedStyle(infoText).display
+
+    if (displayAtual === 'none') {
+        infoText.style.display = 'flex' 
+    } else {
+        infoText.style.display = 'none'
+    }
+}
+
 const startTheGame = () => {
     if (isPaused) {
         // Se estiver pausado, só retorna ao jogo.
@@ -38,7 +49,6 @@ const startTheGame = () => {
 
         pipe.classList.add('move-pipe');
         clouds.classList.add('move-clouds');
-        text.style.display = 'none'
 
         pipe.style.animationPlayState = 'running';
         clouds.style.animationPlayState = 'running';
@@ -122,6 +132,7 @@ const resetGame = () => {
 
 // Computador
 window.addEventListener('keydown', jump)
+menu.addEventListener('click', showMenu)
 play.addEventListener('click', startTheGame)
 pause.addEventListener('click', pauseGame)
 reset.addEventListener('click', resetGame)
